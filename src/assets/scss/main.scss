@@ -1,0 +1,29 @@
+@import "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,700;1,100;1,300&display=swap";
+// Import fonts and non local imports above here
+
+// Import all sub styles below here
+@import './variables/colors';
+
+
+// All global styles goes below here
+* {
+  font-family: 'Lato', sans-serif !important;
+  color: $black;
+}
+body {
+  margin: 0;
+  background-color: $application-bg;
+}
+
+// Disable the default vuetify bg
+.theme--light.v-application {
+  background-color: unset;
+}
+
+p, a {
+  text-decoration: none;
+  span {
+    user-select: none;
+    color: $primary;
+  }
+}
