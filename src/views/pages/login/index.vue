@@ -2,7 +2,7 @@
   <v-container>
     <v-card elevation="0" class="login-card" width="500" color="application-bg">
       <v-layout wrap>
-        <img src="@/assets/images/Orbitas.png" alt="" srcset="">
+        <img src="@/assets/images/Orbitas.png">
         <v-flex grow xs12>
           <p><strong>Hello! Let's get started</strong></p>
           <p>Sign in to continue.</p>
@@ -15,6 +15,7 @@
             flat
             type="text"
             hide-details="auto"
+            prepend-inner-icon="mdi-account"
             v-model="user.email"
             />
         </v-flex>
@@ -26,6 +27,7 @@
               flat
               outlined
               hide-details="auto"
+              prepend-inner-icon="mdi-lock"
               v-model="user.password"
               />
           </v-flex>

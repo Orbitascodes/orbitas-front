@@ -1,6 +1,9 @@
 <template>
   <div class="main-input">
     <v-text-field
+      :class="{
+        'no-margin': noMargin
+      }"
       v-if="type === 'text'"
       v-bind="$attrs"
       v-on="$listeners"
@@ -11,7 +14,8 @@
 <script>
 export default {
   props: {
-    type: { type: String, default: 'text' }
+    type: { type: String, default: 'text' },
+    noMargin: { type: Boolean, default: false }
   }
 }
 </script>
@@ -28,5 +32,8 @@ export default {
 }
 .v-input {
   margin-bottom: 13px !important;
+  &.no-margin {
+    margin-bottom: 0 !important;
+  }
 }
 </style>

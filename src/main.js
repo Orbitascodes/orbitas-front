@@ -6,6 +6,7 @@ import store from './config/store';
 import vuetify from './plugins/vuetify';
 import './assets/scss/main.scss';
 import './components';
+import './assets/svg';
 
 Vue.config.productionTip = false;
 

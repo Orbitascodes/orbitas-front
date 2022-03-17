@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../../views/Home.vue';
+import Home from '../../Orbitas/views/Orbitas';
 import Showcase from '../../Showcase';
 
 Vue.use(VueRouter);
@@ -9,7 +9,12 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
+    components: {
+      default: Home,
+      header: require('../../Orbitas/views/global/Header').default,
+      left: require('../../Orbitas/views/global/Left').default,
+      tools: require('../../Orbitas/views/global/Tools').default
+    },
     meta: {
       public: false,
       onlyNotAuthorized: false,
