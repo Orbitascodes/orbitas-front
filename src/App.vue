@@ -3,7 +3,7 @@
     <v-main>
       <router-view class="view tools" name="tools"></router-view>
       <v-layout>
-        <div class="flex side-left">
+        <div class="flex side-left" ref="sidebar">
           <router-view class="view left" name="left"></router-view>
         </div>
         <v-divider vertical></v-divider>
@@ -13,8 +13,32 @@
         </div>
       </v-layout>
     </v-main>
+
+
+    <dialog.projects />
+    <dialog.help-user />
   </v-app>
 </template>
+
+<script>
+export default {
+  components: {
+    'dialog.projects': () => import('./Orbitas/views/dialogs/projects.vue'),
+    'dialog.help-user': () => import('./Orbitas/views/dialogs/helpUser.vue'),
+  },
+  computed: {
+    sidebarHasCollapsed() {
+      return this.$store.getters['sidebarHasCollapsed']
+    }
+  },
+  watch: {
+    sidebarHasCollapsed(v) {
+      v && this.$refs.sidebar.classList.add('collapsed')
+      !v && this.$refs.sidebar.classList.remove('collapsed')
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .flex {
@@ -25,7 +49,7 @@
     width: 240px;
   }
   &.collapsed {
-    width: 90px;
+    width: 65px !important;
   }
   transition-duration: .5s;
 }

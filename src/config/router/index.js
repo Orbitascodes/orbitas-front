@@ -29,7 +29,7 @@ const routes = [
     name: 'login',
     path: '/login',
     // component: Login,
-    component: require('../../views/pages/login').default,
+    component: require('../../Orbitas/pages/login').default,
     meta: {
       public: true,
       onlyNotAuthorized: true,
