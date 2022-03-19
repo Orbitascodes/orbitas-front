@@ -4,7 +4,6 @@
       :class="{
         'no-margin': noMargin
       }"
-      v-if="type === 'text'"
       v-bind="$attrs"
       v-on="$listeners"
     />
@@ -14,7 +13,6 @@
 <script>
 export default {
   props: {
-    type: { type: String, default: 'text' },
     noMargin: { type: Boolean, default: false }
   }
 }

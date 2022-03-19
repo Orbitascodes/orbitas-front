@@ -20,7 +20,11 @@
             <p><strong>Lorem ipsum</strong></p>
             <p class="tiny-text">youremail@here.com</p>
 
-            <p class="logout"><span>Logout</span></p>
+            <p class="logout">
+              <router-link :to="{ name: 'login' }">
+                <span>Logout</span>
+              </router-link>
+            </p>
           </v-flex>
         </v-layout>
       </v-flex>

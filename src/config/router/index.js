@@ -35,6 +35,24 @@ const routes = [
       onlyNotAuthorized: true,
     },
   },
+  {
+    name: 'signup',
+    path: '/signup',
+    component: require('../../Orbitas/pages/signup').default,
+    meta: {
+      public: true,
+      onlyNotAuthorized: true,
+    },
+  },
+  {
+    name: 'recover',
+    path: '/recover',
+    component: require('../../Orbitas/pages/recover').default,
+    meta: {
+      public: true,
+      onlyNotAuthorized: true,
+    },
+  },
 ];
 
 const router = new VueRouter({
