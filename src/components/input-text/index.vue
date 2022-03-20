@@ -2,7 +2,7 @@
   <div class="main-input">
     <v-text-field
       :class="{
-        'no-margin': noMargin
+        'no-margin': noMargin,
       }"
       v-bind="$attrs"
       v-on="$listeners"
@@ -13,16 +13,16 @@
 <script>
 export default {
   props: {
-    noMargin: { type: Boolean, default: false }
-  }
-}
+    noMargin: { type: Boolean, default: false },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 ::v-deep {
   // #TODO confirmar a cor
   .v-input__slot {
-    background: #FFFFFF !important;
+    background: #ffffff !important;
   }
   .v-text-field--outlined {
     border-radius: 0 !important;

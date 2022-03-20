@@ -8,6 +8,7 @@ export default new Vuex.Store({
     sidebarHasCollapsed: false,
     projectsDialog: { show: false, x: null, y: null },
     showHelpUser: false,
+    theme: null
   },
   mutations: {
     sidebarHasCollapsed: (state, payload) => {
@@ -18,6 +19,9 @@ export default new Vuex.Store({
     },
     showHelpUser: (state, payload) => {
       state.showHelpUser = payload
+    },
+    theme: (state, payload) => {
+      state.theme = payload
     },
   },
   actions: {

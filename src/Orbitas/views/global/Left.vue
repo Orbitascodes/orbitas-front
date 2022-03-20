@@ -3,22 +3,34 @@
     <v-layout class="main-sidebar">
       <v-flex>
         <div class="sidebar-header">
-          <img v-if="!sidebarHasCollapsed" src="@/assets/images/Orbitas.png">
-          <img v-else src="@/assets/images/OrbitasCircle.png">
+          <img
+            v-if="!sidebarHasCollapsed"
+            src="@/assets/images/Orbitas.png"
+          />
+          <img
+            v-else
+            src="@/assets/images/OrbitasCircle.png"
+          />
         </div>
       </v-flex>
       <v-flex class="sidebar-footer">
         <v-layout>
           <v-flex xs3>
             <p class="centralizer">
-              <img src="@/assets/images/Avatar.png">
+              <img src="@/assets/images/Avatar.png" />
             </p>
           </v-flex>
-          <v-flex :class="{
-            'hide': sidebarHasCollapsed, 'user-details': true, 'show': !sidebarHasCollapsed
-            }">
+          <v-flex
+            :class="{
+              hide: sidebarHasCollapsed,
+              'user-details': true,
+              show: !sidebarHasCollapsed,
+            }"
+          >
             <p><strong>Lorem ipsum</strong></p>
-            <p class="tiny-text">youremail@here.com</p>
+            <p class="tiny-text">
+              youremail@here.com
+            </p>
 
             <p class="logout">
               <router-link :to="{ name: 'login' }">
@@ -36,10 +48,10 @@
 export default {
   computed: {
     sidebarHasCollapsed() {
-      return this.$store.getters['sidebarHasCollapsed']
-    }
+      return this.$store.getters.sidebarHasCollapsed;
+    },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -57,7 +69,7 @@ export default {
       }
       &.show {
         opacity: 1;
-        transition-delay: .5s;
+        transition-delay: 0.5s;
       }
     }
     .logout {
