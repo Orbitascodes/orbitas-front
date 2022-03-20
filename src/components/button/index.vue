@@ -6,7 +6,8 @@
       depressed
       :elevation="elevation"
       :class="{
-        'card-button': cardButton
+        'card-button': cardButton,
+        'default-height': defaultHeight
       }"
     >
       <slot />
@@ -18,7 +19,8 @@
 export default {
   props: {
     elevation: { type: Number | String, default: 0 },
-    cardButton: { type: Boolean, default: false }
+    cardButton: { type: Boolean, default: false },
+    defaultHeight: { type: Boolean, default: true }
   }
 }
 </script>
@@ -26,8 +28,10 @@ export default {
 <style lang="scss" scoped>
 ::v-deep {
   .v-btn {
-    height: 53px !important;
-    margin-top: 8px;
+    &.default-height {
+      margin-top: 8px;
+      height: 53px !important;
+    }
     &.card-button {
       margin-top: 0;
       border-radius: 10px;
