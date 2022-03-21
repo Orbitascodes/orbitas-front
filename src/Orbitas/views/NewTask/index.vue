@@ -1,15 +1,20 @@
 <template>
   <v-container>
     <navigation></navigation>
-    <p>Nova task aqui</p>
+    <experiment-details></experiment-details>
+    <tasks></tasks>
   </v-container>
 </template>
 
 <script>
 import navigation from './navigation'
+import experimentDetails from './experimentDetails'
+import tasks from './tasks'
 export default {
   components: {
-    navigation
+    navigation,
+    experimentDetails,
+    tasks
   }
 }
 </script>

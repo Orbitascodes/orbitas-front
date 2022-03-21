@@ -3,7 +3,7 @@
     <div class="tools-navigation">
       <div>
         <p><strong>{{ experimentCount ? experimentCount : 'Experiment 1' }}</strong></p>
-        <p>{{ experimentName ? experimentName : 'Experiment Name' }}</p>
+        <p class="exp-name">{{ experimentName ? experimentName : 'Experiment Name' }}</p>
       </div>
 
       <v1.base-button :default-height="false" icon @click="openModal">
@@ -25,14 +25,14 @@
     </div>
 
     <div class="actions">
-      <v1.base-button @click="goBack">
+      <v1.base-button min-height="61" @click="goBack">
           <v-icon
             tiny
           >
             mdi-arrow-left
           </v-icon>
       </v1.base-button>
-      <v1.base-button @click="continueTaskCreation" color="secondary">
+      <v1.base-button min-height="61" @click="continueTaskCreation" color="secondary">
         Continue
       </v1.base-button>
     </div>
@@ -52,6 +52,7 @@
     padding: 10px;
     height: 61px;
     width: 100%;
+    align-items: center;
     margin: 0 2px;
   }
   .tools-navigation {
@@ -59,8 +60,18 @@
     flex-direction: row;
     justify-content: space-between;
     width: 250px;
+    height: 61px;
     background-color: #d7d7d7;
     margin-right: 2px;
+    padding: 0px 5px;
+    align-items: center;
+    .exp-name {
+      font-size: 12px;
+      text-overflow: ellipsis;
+      max-width: 100px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
   }
   .actions {
     margin-left: 2px;

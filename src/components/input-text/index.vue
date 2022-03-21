@@ -2,7 +2,7 @@
   <div class="main-input">
     <v-text-field
       :class="{
-        'no-margin': noMargin,
+        'no-margin': noMargin
       }"
       v-bind="$attrs"
       v-on="$listeners"

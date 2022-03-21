@@ -29,7 +29,6 @@ export default {
 ::v-deep {
   .v-btn {
     &.default-height {
-      margin-top: 8px;
       height: 53px !important;
     }
     &.card-button {
