@@ -6,7 +6,7 @@
         <p class="exp-name">{{ experimentName ? experimentName : 'Experiment Name' }}</p>
       </div>
 
-      <v1.base-button :default-height="false" icon @click="openModal">
+      <v1.base-button @click="openModal" :default-height="false" icon>
         <v-icon
           tiny
         >
@@ -15,13 +15,9 @@
       </v1.base-button>
     </div>
     <div class="steps">
-      <div class="step"><p>Task</p></div>
-      <div class="step"><p>Data</p></div>
-      <div class="step"><p>Explore</p></div>
-      <div class="step"><p>Run config</p></div>
-      <div class="step"><p>Running</p></div>
-      <div class="step"><p>Evaluation</p></div>
-      <div class="step"><p>Publish</p></div>
+      <div v-for="(item, index) in steps" :key="index"  :class="{
+        'step': true, 'active': actualCreationStep === index
+      }"><p>{{ item }}</p></div>
     </div>
 
     <div class="actions">
@@ -32,12 +28,40 @@
             mdi-arrow-left
           </v-icon>
       </v1.base-button>
-      <v1.base-button min-height="61" @click="continueTaskCreation" color="secondary">
+      <v1.base-button @click="continueCreation" min-height="61" color="secondary">
         Continue
       </v1.base-button>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      experimentCount: 0,
+      experimentName: null,
+      steps: ['Task', 'Data', 'Explore', 'Run config', 'Running', 'Evaluation', 'Publish']
+    }
+  },
+  methods: {
+    continueCreation() {
+      this.$emit('continue')
+    },
+    goBack() {
+      this.$emit('back')
+    },
+    openModal() {
+      this.$emit('open')
+    }
+  },
+  computed: {
+    actualCreationStep() {
+      return this.$store.getters['actualCreationStep']
+    }
+  },
+}
+</script>
 
 <style lang="scss" scoped>
 .navigation-container {
@@ -48,12 +72,31 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: #d7d7d7;
+    background-color: #2e01a12f;
     padding: 10px;
     height: 61px;
     width: 100%;
     align-items: center;
     margin: 0 2px;
+    .step {
+      position: relative;
+      user-select: none;
+      &.active {
+        font-weight: 700;
+      }
+      &::after {
+        content: '〉';
+        position: absolute;
+        right: -25px;
+        color: #2e01a12f;
+        top: 2px;
+      }
+      &:nth-last-child(1) {
+        &::after {
+          content: '';
+        }
+      }
+    }
   }
   .tools-navigation {
     display: flex;
@@ -61,7 +104,7 @@
     justify-content: space-between;
     width: 250px;
     height: 61px;
-    background-color: #d7d7d7;
+    background-color: #2e01a12f;
     margin-right: 2px;
     padding: 0px 5px;
     align-items: center;

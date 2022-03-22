@@ -8,7 +8,10 @@ export default new Vuex.Store({
     sidebarHasCollapsed: false,
     projectsDialog: { show: false, x: null, y: null },
     showHelpUser: false,
-    theme: null
+    theme: null,
+    actualCreationStep: 0,
+    stepDirection: 'foward',
+    maxStepCreation: 5
   },
   mutations: {
     sidebarHasCollapsed: (state, payload) => {
@@ -23,13 +26,22 @@ export default new Vuex.Store({
     theme: (state, payload) => {
       state.theme = payload
     },
+    stepDirection: (state, payload) => {
+      if (payload === 'foward' && state.actualCreationStep < state.maxStepCreation) {
+        state.actualCreationStep++
+      } else if (payload === 'back' && state.actualCreationStep > 0) {
+        state.actualCreationStep--
+      }
+      state.stepDirection = payload
+    },
   },
   actions: {
   },
   getters: {
     sidebarHasCollapsed: (state) => state.sidebarHasCollapsed,
     projectsDialog: (state) => state.projectsDialog,
-    showHelpUser: (state) => state.showHelpUser
+    showHelpUser: (state) => state.showHelpUser,
+    actualCreationStep: (state) => state.actualCreationStep
   },
   modules: {
   },

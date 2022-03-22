@@ -10,6 +10,9 @@
   font-family: 'Lato', sans-serif !important;
   color: $black;
 }
+html {
+  overflow: hidden;
+}
 body {
   margin: 0;
   background-color: $application-bg;
@@ -38,4 +41,9 @@ p, a {
 
 .centralizer {
   text-align: center;
+}
+
+.main-scroll {
+  overflow-y: scroll;
+  max-height: 90vh;
 }

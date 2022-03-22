@@ -21,10 +21,10 @@
         <v-spacer></v-spacer>
         <v-btn
           color="secondary"
-          @click="dialog = false"
           flat
           elevation="0"
           x-large
+          @click="_dialog = false"
         >
           Ok
         </v-btn>
@@ -40,7 +40,10 @@ export default {
   },
   data() {
     return {
-      
+      exp: {
+        name: null,
+        description: null
+      }
     }
   },
   computed: {
@@ -48,7 +51,8 @@ export default {
       get() {
         return this.dialog
       },
-      set(v) {
+      set() {
+        this.$emit('close')
       }
     }
   },

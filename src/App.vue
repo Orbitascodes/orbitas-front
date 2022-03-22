@@ -9,7 +9,9 @@
         <v-divider vertical></v-divider>
         <div class="flex main">
           <router-view name="header"></router-view>
-          <router-view />
+          <div class="main-scroll">
+            <router-view />
+          </div>
         </div>
       </v-layout>
     </v-main>
