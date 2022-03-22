@@ -2,7 +2,7 @@
   <v-container>
     <v-card elevation="0" class="login-card" width="500" color="application-bg">
       <v-layout wrap>
-        <img src="@/assets/images/Orbitas.png">
+        <img src="@/assets/images/Orbitas.png" />
         <v-flex grow xs12>
           <p><strong>Recover your account</strong></p>
         </v-flex>
@@ -16,11 +16,11 @@
             hide-details="auto"
             prepend-inner-icon="mdi-account"
             v-model="user.email"
-            />
+          />
         </v-flex>
-          <v-flex grow xs12>
-            <router-link :to="{ name: 'login' }">
-              <v1.base-button block color="primary">
+        <v-flex grow xs12>
+          <router-link :to="{ name: 'login' }">
+            <v1.base-button block color="primary">
               Send Email
             </v1.base-button>
           </router-link>
@@ -28,7 +28,9 @@
 
         <v-flex class="footer-card-login" grow xs12>
           <!-- Router link to recover and sing up -->
-          <p><strong>Have an account?
+          <p>
+            <strong
+              >Have an account?
               <router-link :to="{ name: 'login' }"><span>Sign Up</span></router-link>
             </strong>
           </p>
@@ -39,7 +41,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -47,8 +48,8 @@ export default {
         password: null,
         email: null,
         stayLogged: false,
-      }
-    }
+      },
+    };
   },
 };
 </script>

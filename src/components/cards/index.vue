@@ -13,9 +13,7 @@
       </div>
 
       <v1.base-button color="secondary" @click="sendAddEvent" elevation="1" card-button>
-        <v-icon
-          large
-        >
+        <v-icon large>
           mdi-plus
         </v-icon>
       </v1.base-button>
@@ -26,16 +24,12 @@
 
         <div class="action">
           <v1.base-button :default-height="false" icon @click="expand">
-            <v-icon
-              tiny
-            >
+            <v-icon tiny>
               mdi-plus
             </v-icon>
           </v1.base-button>
           <v1.base-button :default-height="false" icon @click="expand">
-            <v-icon
-              tiny
-            >
+            <v-icon tiny>
               mdi-share
             </v-icon>
           </v1.base-button>
@@ -59,20 +53,19 @@
         </div>
 
         <div ref="content" class="content">
-
           <div class="title-content">
             <p>Model</p>
             <p>Lorem Ipsum</p>
           </div>
 
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna
-            aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-            ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur
-            sint occaecat cupidatat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum.</p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum.
+          </p>
         </div>
       </div>
     </template>
@@ -83,21 +76,21 @@
 export default {
   props: {
     firstCard: { type: Boolean, default: false },
-    maxWidth: { type: Number | String, default: 485 }
+    maxWidth: { type: [Number, String], default: 485 },
   },
   methods: {
     sendAddEvent() {
-      this.$emit('addNew')
+      this.$emit('addNew');
     },
     expand() {
       if (this.$refs.content.clientHeight === 0) {
-        this.$refs.content.setAttribute('style', `height: ${this.$refs.content.scrollHeight}px`)
+        this.$refs.content.setAttribute('style', `height: ${this.$refs.content.scrollHeight}px`);
       } else {
-        this.$refs.content.removeAttribute('style')
+        this.$refs.content.removeAttribute('style');
       }
-    }
+    },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -144,7 +137,7 @@ export default {
     .content {
       overflow: hidden;
       height: 0px;
-      transition-duration: .5s;
+      transition-duration: 0.5s;
       .title-content {
         flex-wrap: wrap;
         display: flex;

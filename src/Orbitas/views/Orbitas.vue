@@ -10,16 +10,16 @@
 export default {
   methods: {
     add() {
-      this.$router.push({ name: 'NewTask' })
-    }
+      this.$router.push({ name: 'NewTask' });
+    },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .container {
-	margin: 0 auto;
-	display: flex;
+  margin: 0 auto;
+  display: flex;
   flex-wrap: wrap;
 }
 </style>

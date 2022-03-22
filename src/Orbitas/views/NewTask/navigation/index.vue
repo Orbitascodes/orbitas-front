@@ -2,31 +2,36 @@
   <div class="navigation-container">
     <div class="tools-navigation">
       <div>
-        <p><strong>{{ experimentCount ? experimentCount : 'Experiment 1' }}</strong></p>
+        <p>
+          <strong>{{ experimentCount ? experimentCount : 'Experiment 1' }}</strong>
+        </p>
         <p class="exp-name">{{ experimentName ? experimentName : 'Experiment Name' }}</p>
       </div>
 
       <v1.base-button @click="openModal" :default-height="false" icon>
-        <v-icon
-          tiny
-        >
+        <v-icon tiny>
           mdi-pencil
         </v-icon>
       </v1.base-button>
     </div>
     <div class="steps">
-      <div v-for="(item, index) in steps" :key="index"  :class="{
-        'step': true, 'active': actualCreationStep === index
-      }"><p>{{ item }}</p></div>
+      <div
+        v-for="(item, index) in steps"
+        :key="index"
+        :class="{
+          step: true,
+          active: actualCreationStep === index,
+        }"
+      >
+        <p>{{ item }}</p>
+      </div>
     </div>
 
     <div class="actions">
       <v1.base-button min-height="61" @click="goBack">
-          <v-icon
-            tiny
-          >
-            mdi-arrow-left
-          </v-icon>
+        <v-icon tiny>
+          mdi-arrow-left
+        </v-icon>
       </v1.base-button>
       <v1.base-button @click="continueCreation" min-height="61" color="secondary">
         Continue
@@ -41,26 +46,26 @@ export default {
     return {
       experimentCount: 0,
       experimentName: null,
-      steps: ['Task', 'Data', 'Explore', 'Run config', 'Running', 'Evaluation', 'Publish']
-    }
+      steps: ['Task', 'Data', 'Explore', 'Run config', 'Running', 'Evaluation', 'Publish'],
+    };
   },
   methods: {
     continueCreation() {
-      this.$emit('continue')
+      this.$emit('continue');
     },
     goBack() {
-      this.$emit('back')
+      this.$emit('back');
     },
     openModal() {
-      this.$emit('open')
-    }
+      this.$emit('open');
+    },
   },
   computed: {
     actualCreationStep() {
-      return this.$store.getters['actualCreationStep']
-    }
+      return this.$store.getters.actualCreationStep;
+    },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>

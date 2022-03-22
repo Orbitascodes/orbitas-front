@@ -16,20 +16,19 @@
       </v-layout>
     </v-main>
 
-
     <dialog.projects />
     <dialog.help-user />
   </v-app>
 </template>
 
 <script>
-const ROUTES_TO_SKIP = ['login', 'signup', 'recover']
+const ROUTES_TO_SKIP = ['login', 'signup', 'recover'];
 
 export default {
   data() {
     return {
-      routesToSkip: ROUTES_TO_SKIP
-    }
+      routesToSkip: ROUTES_TO_SKIP,
+    };
   },
   components: {
     'dialog.projects': () => import('./Orbitas/views/dialogs/projects.vue'),
@@ -37,19 +36,19 @@ export default {
   },
   computed: {
     sidebarHasCollapsed() {
-      return this.$store.getters['sidebarHasCollapsed']
+      return this.$store.getters.sidebarHasCollapsed;
     },
     routeName() {
-      return this.$route.name
-    }
+      return this.$route.name;
+    },
   },
   watch: {
     sidebarHasCollapsed(v) {
-      v && this.$refs.sidebar.classList.add('collapsed')
-      !v && this.$refs.sidebar.classList.remove('collapsed')
-    }
-  }
-}
+      v && this.$refs.sidebar.classList.add('collapsed');
+      !v && this.$refs.sidebar.classList.remove('collapsed');
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -63,6 +62,6 @@ export default {
   &.collapsed {
     width: 65px !important;
   }
-  transition-duration: .5s;
+  transition-duration: 0.5s;
 }
 </style>

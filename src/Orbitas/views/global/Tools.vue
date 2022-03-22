@@ -7,7 +7,8 @@
     right
     bottom
     absolute
-  ><img src="@/assets/images/Tools.png"></v-btn>
+    ><img src="@/assets/images/Tools.png"
+  /></v-btn>
 </template>
 
 <script>
@@ -15,14 +16,14 @@ export default {
   computed: {
     showHelpUser: {
       get() {
-        return this.$store.getters['showHelpUser']
+        return this.$store.getters.showHelpUser;
       },
       set(v) {
-        this.$store.commit('showHelpUser', v)
-      }
-    }
+        this.$store.commit('showHelpUser', v);
+      },
+    },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>

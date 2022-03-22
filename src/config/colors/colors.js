@@ -6,7 +6,7 @@ const colors = {
   'info-bg': '#F8F2F2',
   white: '#FFFFFD',
   red: '#FD3F3F',
-  'application-bg': '#E5E5E5'
+  'application-bg': '#E5E5E5',
 };
 
 export default colors;

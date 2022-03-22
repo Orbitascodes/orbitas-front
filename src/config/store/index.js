@@ -11,38 +11,36 @@ export default new Vuex.Store({
     theme: null,
     actualCreationStep: 0,
     stepDirection: 'foward',
-    maxStepCreation: 5
+    maxStepCreation: 5,
   },
   mutations: {
     sidebarHasCollapsed: (state, payload) => {
-      state.sidebarHasCollapsed = payload
+      state.sidebarHasCollapsed = payload;
     },
     projectsDialog: (state, payload) => {
-      state.projectsDialog = payload
+      state.projectsDialog = payload;
     },
     showHelpUser: (state, payload) => {
-      state.showHelpUser = payload
+      state.showHelpUser = payload;
     },
     theme: (state, payload) => {
-      state.theme = payload
+      state.theme = payload;
     },
     stepDirection: (state, payload) => {
       if (payload === 'foward' && state.actualCreationStep < state.maxStepCreation) {
-        state.actualCreationStep++
+        state.actualCreationStep++;
       } else if (payload === 'back' && state.actualCreationStep > 0) {
-        state.actualCreationStep--
+        state.actualCreationStep--;
       }
-      state.stepDirection = payload
+      state.stepDirection = payload;
     },
   },
-  actions: {
-  },
+  actions: {},
   getters: {
     sidebarHasCollapsed: (state) => state.sidebarHasCollapsed,
     projectsDialog: (state) => state.projectsDialog,
     showHelpUser: (state) => state.showHelpUser,
-    actualCreationStep: (state) => state.actualCreationStep
+    actualCreationStep: (state) => state.actualCreationStep,
   },
-  modules: {
-  },
+  modules: {},
 });

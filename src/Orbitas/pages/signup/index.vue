@@ -1,24 +1,13 @@
 <template>
   <v-container>
-    <v-card
-      elevation="0"
-      class="login-card"
-      width="500"
-      color="application-bg"
-    >
+    <v-card elevation="0" class="login-card" width="500" color="application-bg">
       <v-layout wrap>
         <img src="@/assets/images/Orbitas.png" />
-        <v-flex
-          grow
-          xs12
-        >
+        <v-flex grow xs12>
           <p><strong>Create Account</strong></p>
           <p>Takes more than 30 seconds.</p>
         </v-flex>
-        <v-flex
-          grow
-          xs12
-        >
+        <v-flex grow xs12>
           <v1.base-input
             v-model="user.email"
             solo
@@ -31,10 +20,7 @@
             prepend-inner-icon="mdi-account"
           />
         </v-flex>
-        <v-flex
-          grow
-          xs12
-        >
+        <v-flex grow xs12>
           <v1.base-input
             v-model="user.password"
             solo
@@ -47,10 +33,7 @@
             prepend-inner-icon="mdi-lock"
           />
         </v-flex>
-        <v-flex
-          grow
-          xs12
-        >
+        <v-flex grow xs12>
           <v1.base-input
             v-model="user.confirmPassword"
             solo
@@ -63,10 +46,7 @@
             prepend-inner-icon="mdi-lock"
           />
         </v-flex>
-        <v-flex
-          grow
-          xs12
-        >
+        <v-flex grow xs12>
           <v1.base-input-select
             solo
             flat
@@ -77,14 +57,8 @@
             :items="itemsSelect"
           />
         </v-flex>
-        <v-flex
-          grow
-          xs12
-        >
-          <v1.base-button
-            block
-            color="primary"
-          >
+        <v-flex grow xs12>
+          <v1.base-button block color="primary">
             Sign Up
           </v1.base-button>
         </v-flex>

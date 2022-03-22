@@ -4,43 +4,27 @@ module.exports = {
     node: true,
   },
   extends: [
-    "plugin:vue/recommended",
-    "eslint:recommended",
-    "prettier/vue",
-    "plugin:prettier/recommended"
+    'plugin:vue/essential',
+    '@vue/airbnb',
   ],
   parserOptions: {
     parser: 'babel-eslint',
   },
   rules: {
-    "no-plusplus": 0,
-    "no-console": 0,
-    "linebreak-style": 0,
-    "global-require": 0,
-    "vue/no-v-html": 0,
-    "vue/require-prop-types": 0,
-    "eslint linebreak-style": [
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'linebreak-style': 0,
+    'global-require': 0,
+    'import/extensions': 0,
+    'no-plusplus': 0,
+    'no-console': 0,
+    'no-unused-expressions': 0,
+    'no-useless-escape': 0,
+    'eslint linebreak-style': [
       0,
-      "error",
-      "windows"
+      'error',
+      'windows'
     ],
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto",
-        "htmlWhitespaceSensitivity": "ignore",
-        "semi": false,
-        "singleQuote": true
-      }
-    ],
-    "vue/html-self-closing": [
-      "error",
-      {
-        "html": {
-          "void": "any"
-        }
-      }
-    ]
   },
   overrides: [
     {

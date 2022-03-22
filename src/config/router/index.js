@@ -14,7 +14,7 @@ const routes = [
       default: Home,
       header: require('../../Orbitas/views/global/Header').default,
       left: require('../../Orbitas/views/global/Left').default,
-      tools: require('../../Orbitas/views/global/Tools').default
+      tools: require('../../Orbitas/views/global/Tools').default,
     },
     meta: {
       public: false,
@@ -28,7 +28,7 @@ const routes = [
       default: NewTask,
       header: require('../../Orbitas/views/global/Header').default,
       left: require('../../Orbitas/views/global/Left').default,
-      tools: require('../../Orbitas/views/global/Tools').default
+      tools: require('../../Orbitas/views/global/Tools').default,
     },
     meta: {
       public: false,

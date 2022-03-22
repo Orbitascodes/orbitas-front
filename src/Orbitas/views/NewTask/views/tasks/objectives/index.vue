@@ -1,9 +1,15 @@
 <template>
-  <div :ref="refName" @click="activeCard" :class="{
-    'main-card': true,
-    active
-  }">
-    <p><strong>{{ name }}</strong></p>
+  <div
+    :ref="refName"
+    @click="activeCard"
+    :class="{
+      'main-card': true,
+      active,
+    }"
+  >
+    <p>
+      <strong>{{ name }}</strong>
+    </p>
   </div>
 </template>
 
@@ -16,15 +22,15 @@ export default {
   },
   computed: {
     refName() {
-      return this.name.split(' ').join('_')
-    }
+      return this.name.split(' ').join('_');
+    },
   },
   methods: {
     activeCard() {
-      this.$emit('activate', this.index)
-    }
+      this.$emit('activate', this.index);
+    },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -42,9 +48,9 @@ export default {
     color: #555555 !important;
   }
   &.active {
-    border: 1px solid #712EEE;
+    border: 1px solid #712eee;
     p strong {
-      color: #712EEE !important;
+      color: #712eee !important;
     }
   }
 }

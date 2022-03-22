@@ -2,10 +2,7 @@
   <div class="main-card">
     <template v-if="first">
       <div class="first-card">
-        <v-icon
-          large
-          color="white"
-        >
+        <v-icon large color="white">
           mdi-plus
         </v-icon>
         <p>{{ name }}</p>
@@ -14,10 +11,7 @@
     <template v-else>
       <div>
         <div class="card">
-          <v-icon
-            large
-            color="white"
-          >
+          <v-icon large color="white">
             mdi-database
           </v-icon>
           <p>{{ name }}</p>
@@ -32,9 +26,9 @@
 export default {
   props: {
     first: { type: Boolean, default: false },
-    name: { type: String, default: 'Import Data' }
-  }
-}
+    name: { type: String, default: 'Import Data' },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -48,7 +42,7 @@ export default {
     border: 1px solid #2e01a12f;
     height: 130px;
     i {
-      background-color: #2e01a12f;;
+      background-color: #2e01a12f;
       border-radius: 50%;
       padding: 2px;
       margin-bottom: 30px;
@@ -56,7 +50,7 @@ export default {
   }
   .first-card {
     padding: 5px;
-    background-color: #712EEE;
+    background-color: #712eee;
     height: 100%;
     display: flex;
     flex-direction: row;

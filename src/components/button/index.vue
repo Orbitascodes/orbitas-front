@@ -7,7 +7,7 @@
       :elevation="elevation"
       :class="{
         'card-button': cardButton,
-        'default-height': defaultHeight
+        'default-height': defaultHeight,
       }"
     >
       <slot />
@@ -18,11 +18,11 @@
 <script>
 export default {
   props: {
-    elevation: { type: Number | String, default: 0 },
+    elevation: { type: [Number, String], default: 0 },
     cardButton: { type: Boolean, default: false },
-    defaultHeight: { type: Boolean, default: true }
-  }
-}
+    defaultHeight: { type: Boolean, default: true },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

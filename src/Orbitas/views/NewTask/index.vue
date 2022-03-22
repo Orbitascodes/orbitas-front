@@ -1,16 +1,23 @@
 <template>
   <v-container>
-    <navigation @continue="continueCreation" @open="open" @back="goBack" />
-    <experiment-details :dialog="openModal" @close="close" />
-    <component :is='allSteps[actualCreationStep]' />
+    <navigation
+      @continue="continueCreation"
+      @open="open"
+      @back="goBack"
+    />
+    <experiment-details
+      :dialog="openModal"
+      @close="close"
+    />
+    <component :is="allSteps[actualCreationStep]" />
   </v-container>
 </template>
 
 <script>
-const ALL_TASK_STEPS = ['tasks', 'dataTask', 'runConfig', 'running', 'evaluation', 'publish']
+import navigation from './navigation';
+import experimentDetails from './experimentDetails';
 
-import navigation from './navigation'
-import experimentDetails from './experimentDetails'
+const ALL_TASK_STEPS = ['tasks', 'dataTask', 'runConfig', 'running', 'evaluation', 'publish'];
 export default {
   components: {
     navigation,
@@ -25,29 +32,29 @@ export default {
   data() {
     return {
       allSteps: ALL_TASK_STEPS,
-      openModal: false
-    }
+      openModal: false,
+    };
   },
   computed: {
     actualCreationStep: {
       get() {
-        return this.$store.getters['actualCreationStep']
+        return this.$store.getters.actualCreationStep;
       },
-    }
+    },
   },
   methods: {
     continueCreation() {
-      this.$store.commit('stepDirection', 'foward')
+      this.$store.commit('stepDirection', 'foward');
     },
     goBack() {
-      this.$store.commit('stepDirection', 'back')
+      this.$store.commit('stepDirection', 'back');
     },
     open() {
-      this.openModal = true
+      this.openModal = true;
     },
     close() {
-      this.openModal = false
-    }
+      this.openModal = false;
+    },
   },
-}
+};
 </script>
