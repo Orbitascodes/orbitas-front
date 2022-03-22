@@ -56,11 +56,14 @@
             prepend-inner-icon="mdi-briefcase"
             :items="itemsSelect"
           />
+          <br>
         </v-flex>
         <v-flex grow xs12>
-          <v1.base-button block color="primary">
-            Sign Up
-          </v1.base-button>
+          <router-link :to="{ name: 'login' }">
+            <v1.base-button block color="primary">
+              Sign Up
+            </v1.base-button>
+          </router-link>
         </v-flex>
       </v-layout>
     </v-card>
@@ -96,12 +99,6 @@ export default {
     itemsSelect() {
       return ['Item 1', 'Item 2'];
     },
-  },
-  watch: {
-    // confirmPassword(value) {
-    //   if (value === password)
-    //   this.passwordIsEqual = true
-    // }
   },
 };
 </script>

@@ -2,7 +2,7 @@
   <div class="main-card">
     <template v-if="first">
       <div class="first-card">
-        <v-icon large color="white">
+        <v-icon @click.native="openDialog = true" large color="white">
           mdi-plus
         </v-icon>
         <p>{{ name }}</p>
@@ -19,14 +19,31 @@
         </div>
       </div>
     </template>
+
+    <dialog-import @close="close" :dialog="openDialog" />
   </div>
 </template>
 
 <script>
+import dialogImport from '../dialogImport';
+
 export default {
+  data() {
+    return {
+      openDialog: false,
+    };
+  },
+  components: {
+    dialogImport,
+  },
   props: {
     first: { type: Boolean, default: false },
     name: { type: String, default: 'Import Data' },
+  },
+  methods: {
+    close() {
+      this.openDialog = false;
+    },
   },
 };
 </script>

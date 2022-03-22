@@ -3,14 +3,16 @@
     <v-layout class="main-sidebar">
       <v-flex>
         <div class="sidebar-header">
-          <img
-            v-if="!sidebarHasCollapsed"
-            src="@/assets/images/Orbitas.png"
-          />
-          <img
-            v-else
-            src="@/assets/images/OrbitasCircle.png"
-          />
+          <router-link to="/">
+            <img
+              v-if="!sidebarHasCollapsed"
+              src="@/assets/images/Orbitas.png"
+            />
+            <img
+              v-else
+              src="@/assets/images/OrbitasCircle.png"
+            />
+          </router-link>
         </div>
       </v-flex>
       <v-flex class="sidebar-footer">

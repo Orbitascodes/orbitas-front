@@ -1,15 +1,19 @@
 <template>
-  <v-dialog v-model="dialog" width="500">
+  <v-dialog v-model="dialog" width="800">
     <v-card>
       <v-card-title class="text-h5 lighten-2">
-        Edit Experiment Information
+        Import Data
       </v-card-title>
 
       <div class="card-body">
-        <p><strong>Experiment Name</strong></p>
-        <v1.base-input type="text" flat outlined v-model="exp.name" />
-        <p><strong>Experiment Description</strong></p>
-        <v1.base-text-area flat outlined v-model="exp.description" />
+        <v-file-input
+          label="Drag and drop or browse your files"
+          :prepend-icon="null"
+          outlined
+          clear-icon
+        ></v-file-input>
+        <p><strong>Name</strong></p>
+        <v1.base-input flat outlined />
       </div>
 
       <v-card-actions>
@@ -27,14 +31,6 @@ export default {
   props: {
     dialog: { type: Boolean, default: false },
   },
-  data() {
-    return {
-      exp: {
-        name: null,
-        description: null,
-      },
-    };
-  },
   computed: {
     _dialog: {
       get() {
@@ -51,5 +47,12 @@ export default {
 <style lang="scss" scoped>
 .card-body {
   padding: 10px 30px;
+}
+::v-deep {
+  .v-file-input {
+    .v-input__slot {
+      height: 500px;
+    }
+  }
 }
 </style>

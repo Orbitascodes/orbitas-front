@@ -1,8 +1,8 @@
 <template>
   <v-container>
     <v1.base-card rounded="0" hover first-card @addNew="add" />
-    <v1.base-card rounded="0" hover @addNew="add" />
-    <v1.base-card rounded="0" hover @addNew="add" />
+    <v1.base-card rounded="0" hover />
+    <v1.base-card rounded="0" hover />
   </v-container>
 </template>
 
