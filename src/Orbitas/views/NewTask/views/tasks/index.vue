@@ -2,8 +2,6 @@
   <div class="main-tasks">
     <div class="title-area">
       <p><strong>Define task's objective</strong></p>
-
-      <v-switch v-model="switchOption" flat label="info"></v-switch>
     </div>
     <v-layout class="objectives-area" wrap>
       <v-flex xs6 v-for="(item, index) in objectives" :key="index">
@@ -51,6 +49,9 @@ export default {
   max-width: 50%;
 }
 .title-area {
+  p strong {
+    font-size: 30px;
+  }
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -59,6 +60,7 @@ export default {
   height: 25px;
   align-content: center;
   margin-top: 30px;
+  margin-bottom: 20px;
   .v-input--selection-controls {
     margin-top: 0;
     height: 25px;

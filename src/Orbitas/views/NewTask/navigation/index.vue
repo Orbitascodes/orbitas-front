@@ -77,7 +77,7 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: #2e01a12f;
+    background-color: #e5e5e51a;
     padding: 10px;
     height: 61px;
     width: 100%;
@@ -88,6 +88,9 @@ export default {
       user-select: none;
       &.active {
         font-weight: 700;
+        p {
+          color: #712eee !important;
+        }
       }
       &::after {
         content: '〉';
@@ -109,7 +112,7 @@ export default {
     justify-content: space-between;
     width: 250px;
     height: 61px;
-    background-color: #2e01a12f;
+    background-color: #e5e5e51a;
     margin-right: 2px;
     padding: 0px 5px;
     align-items: center;

@@ -38,7 +38,7 @@ export default {
   height: 205px;
   width: auto;
   text-align: center;
-  margin: 5px;
+  margin: 10px;
   display: flex;
   justify-content: center;
   align-items: center;

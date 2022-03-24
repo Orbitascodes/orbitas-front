@@ -20,7 +20,7 @@
     </template>
     <template v-else>
       <div class="card-title">
-        <p><strong>Lorem Ipsum</strong></p>
+        <p><strong>{{ theData.name }}</strong></p>
 
         <div class="action">
           <v1.base-button :default-height="false" icon @click="expand">
@@ -28,7 +28,7 @@
               mdi-plus
             </v-icon>
           </v1.base-button>
-          <v1.base-button :default-height="false" icon @click="expand">
+          <v1.base-button :default-height="false" icon>
             <v-icon tiny>
               mdi-share
             </v-icon>
@@ -40,31 +40,26 @@
 
       <div class="card-body">
         <div class="sub-section">
-          <p><span>Explore</span></p>
+          <p><span>{{ theData.step }}</span></p>
           <p>Step</p>
         </div>
         <div class="sub-section">
-          <p><span>Clustering</span></p>
+          <p><span>{{ theData.objective }}</span></p>
           <p>Task Objective</p>
         </div>
         <div class="sub-section">
-          <p><span>Lorem Ipsum</span></p>
+          <p><span>{{ theData.data }}</span></p>
           <p>Data</p>
         </div>
 
         <div ref="content" class="content">
           <div class="title-content">
             <p>Model</p>
-            <p>Lorem Ipsum</p>
+            <p>{{ theData.model }}</p>
           </div>
 
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-            mollit anim id est laborum.
+            {{ theData.description }}
           </p>
         </div>
       </div>
@@ -76,7 +71,8 @@
 export default {
   props: {
     firstCard: { type: Boolean, default: false },
-    maxWidth: { type: [Number, String], default: 485 },
+    maxWidth: { type: [Number, String], default: 480 },
+    dataCard: { type: Object, default: () => ({}) },
   },
   methods: {
     sendAddEvent() {
@@ -88,6 +84,11 @@ export default {
       } else {
         this.$refs.content.removeAttribute('style');
       }
+    },
+  },
+  computed: {
+    theData() {
+      return this.dataCard;
     },
   },
 };
@@ -106,6 +107,7 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  max-height: 126px;
   background-color: #d7d7d7 !important;
   .card-title {
     font-size: 20px !important;

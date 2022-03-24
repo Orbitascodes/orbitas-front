@@ -12,6 +12,7 @@ export default new Vuex.Store({
     actualCreationStep: 0,
     stepDirection: 'foward',
     maxStepCreation: 5,
+    searchTasks: null,
   },
   mutations: {
     sidebarHasCollapsed: (state, payload) => {
@@ -26,8 +27,11 @@ export default new Vuex.Store({
     theme: (state, payload) => {
       state.theme = payload;
     },
+    searchTasks: (state, payload) => {
+      state.searchTasks = payload;
+    },
     stepDirection: (state, payload) => {
-      if (payload === 'foward' && state.actualCreationStep < state.maxStepCreation) {
+      if (payload === 'foward' && state.actualCreationStep <= state.maxStepCreation) {
         state.actualCreationStep++;
       } else if (payload === 'back' && state.actualCreationStep > 0) {
         state.actualCreationStep--;
@@ -41,6 +45,7 @@ export default new Vuex.Store({
     projectsDialog: (state) => state.projectsDialog,
     showHelpUser: (state) => state.showHelpUser,
     actualCreationStep: (state) => state.actualCreationStep,
+    searchTasks: (state) => state.searchTasks,
   },
   modules: {},
 });
