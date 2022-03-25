@@ -56,7 +56,17 @@
             prepend-inner-icon="mdi-briefcase"
             :items="itemsSelect"
           />
-          <br>
+          <br />
+        </v-flex>
+        <v-checkbox v-model="acceptTerms" label="Accept Terms of Conditions"></v-checkbox>
+        <br />
+        <v-flex grow xs12>
+          <p>
+            <strong
+              >Read
+              <router-link :to="{ name: 'terms' }"><span>Terms of Conditions</span></router-link>
+            </strong>
+          </p>
         </v-flex>
         <v-flex grow xs12>
           <router-link :to="{ name: 'login' }">
@@ -80,6 +90,7 @@ export default {
         password: null,
         email: null,
         confirmPassword: null,
+        acceptTerms: false,
       },
       strongPass: STRONG_PASSWORD_REGEX,
       validEmail: VALID_EMAIL_REGEX,

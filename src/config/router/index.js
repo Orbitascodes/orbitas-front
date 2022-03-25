@@ -43,8 +43,16 @@ const routes = [
   {
     name: 'login',
     path: '/login',
-    // component: Login,
     component: require('../../Orbitas/pages/login').default,
+    meta: {
+      public: true,
+      onlyNotAuthorized: true,
+    },
+  },
+  {
+    name: 'terms',
+    path: '/terms-of-conditions',
+    component: require('../../Orbitas/pages/terms').default,
     meta: {
       public: true,
       onlyNotAuthorized: true,
