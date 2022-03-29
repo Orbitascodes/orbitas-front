@@ -1,18 +1,19 @@
 <template>
-<div>
-  <!-- Echarts pie chart exemple -->
-  <v-chart class="chart" :option="option" />
-</div>
+  <div>
+    <!-- Echarts pie chart exemple -->
+    <v-chart class="chart" :option="options" />
+  </div>
 </template>
 
 <script>
 import { use } from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
-import { PieChart } from 'echarts/charts';
+import { BarChart, PieChart } from 'echarts/charts';
 import {
   TitleComponent,
   TooltipComponent,
   LegendComponent,
+  GridComponent,
 } from 'echarts/components';
 import VChart, { THEME_KEY } from 'vue-echarts';
 
@@ -22,17 +23,22 @@ use([
   TitleComponent,
   TooltipComponent,
   LegendComponent,
+  BarChart,
+  GridComponent,
 ]);
 
 export default {
   props: {
-    type: Object, default: () => this.option,
+    options: {
+      type: Object,
+      default: () => this.option,
+    },
   },
   components: {
     VChart,
   },
   provide: {
-    [THEME_KEY]: 'dark',
+    [THEME_KEY]: 'light',
   },
   data() {
     return {
@@ -48,13 +54,7 @@ export default {
         legend: {
           orient: 'vertical',
           left: 'left',
-          data: [
-            'Direct',
-            'Email',
-            'Ad Networks',
-            'Video Ads',
-            'Search Engines',
-          ],
+          data: ['Direct', 'Email', 'Ad Networks', 'Video Ads', 'Search Engines'],
         },
         series: [
           {
