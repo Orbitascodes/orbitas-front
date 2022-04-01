@@ -84,8 +84,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .chart {
-  height: 400px;
+  height: 200px;
+  width: 200px;
 }
 </style>

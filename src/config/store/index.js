@@ -13,6 +13,7 @@ export default new Vuex.Store({
     stepDirection: 'foward',
     maxStepCreation: 5,
     searchTasks: null,
+    changeFeature: 'AiLab',
   },
   mutations: {
     sidebarHasCollapsed: (state, payload) => {
@@ -30,6 +31,9 @@ export default new Vuex.Store({
     searchTasks: (state, payload) => {
       state.searchTasks = payload;
     },
+    changeFeature: (state, payload) => {
+      state.changeFeature = payload;
+    },
     stepDirection: (state, payload) => {
       if (payload === 'foward' && state.actualCreationStep <= state.maxStepCreation) {
         state.actualCreationStep++;
@@ -46,6 +50,7 @@ export default new Vuex.Store({
     showHelpUser: (state) => state.showHelpUser,
     actualCreationStep: (state) => state.actualCreationStep,
     searchTasks: (state) => state.searchTasks,
+    changeFeature: (state) => state.changeFeature,
   },
   modules: {},
 });

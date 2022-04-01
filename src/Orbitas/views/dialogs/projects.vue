@@ -10,12 +10,12 @@
     min-width="200"
   >
     <v-card class="menu-projects">
-      <p>teste</p>
-      <p>teste</p>
-      <p>teste</p>
-      <p>teste</p>
-      <p>teste</p>
-      <p>teste</p>
+      <v-btn class="to-feature" icon @click="changeFeature('AiLab')">
+        <svg-ai-lab></svg-ai-lab>
+      </v-btn>
+      <v-btn class="to-feature" icon @click="changeFeature('Board')">
+        <svg-ai-lab></svg-ai-lab>
+      </v-btn>
     </v-card>
   </v-menu>
 </template>
@@ -35,11 +35,25 @@ export default {
       return this.$store.getters.projectsDialog.y + NUDGE_TOP;
     },
   },
+  methods: {
+    changeFeature(feature) {
+      this.$store.commit('changeFeature', feature);
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .menu-projects {
-  padding: 10px;
+  padding: 20px 10px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 200px;
+  align-items: center;
+  justify-content: space-between;
+  .to-feature {
+    margin: 10px 5px;
+  }
 }
 </style>
