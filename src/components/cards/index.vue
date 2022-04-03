@@ -1,70 +1,86 @@
 <template>
-  <v-card
-    v-bind="$attrs"
-    v-on="$listeners"
-    :class="{ 'first-card': firstCard, 'regular-card': !firstCard }"
-    :max-width="maxWidth"
-    :min-width="maxWidth"
-  >
-    <template v-if="firstCard">
-      <div class="card-title">
-        <p><strong>New</strong></p>
-        <p class="sub-title">Create a new</p>
-      </div>
-
-      <v1.base-button color="secondary" @click="sendAddEvent" elevation="1" card-button>
-        <v-icon large>
-          mdi-plus
-        </v-icon>
-      </v1.base-button>
-    </template>
-    <template v-else>
-      <div class="card-title">
-        <p><strong>{{ theData.name }}</strong></p>
-
-        <div class="action">
-          <v1.base-button :default-height="false" icon @click="expand">
-            <v-icon tiny>
-              mdi-plus
-            </v-icon>
-          </v1.base-button>
-          <v1.base-button :default-height="false" icon>
-            <v-icon tiny>
-              mdi-share
-            </v-icon>
-          </v1.base-button>
-        </div>
-      </div>
-
-      <v-divider></v-divider>
-
-      <div class="card-body">
-        <div class="sub-section">
-          <p><span>{{ theData.step }}</span></p>
-          <p>Step</p>
-        </div>
-        <div class="sub-section">
-          <p><span>{{ theData.objective }}</span></p>
-          <p>Task Objective</p>
-        </div>
-        <div class="sub-section">
-          <p><span>{{ theData.data }}</span></p>
-          <p>Data</p>
+  <div class="main-card">
+    <v-card
+      v-if="!boardCard"
+      v-bind="$attrs"
+      v-on="$listeners"
+      :class="{ 'first-card': firstCard, 'regular-card': !firstCard }"
+      :max-width="maxWidth"
+      :min-width="maxWidth"
+    >
+      <template v-if="firstCard">
+        <div class="card-title">
+          <p><strong>New</strong></p>
+          <p class="sub-title">Create a new</p>
         </div>
 
-        <div ref="content" class="content">
-          <div class="title-content">
-            <p>Model</p>
-            <p>{{ theData.model }}</p>
+        <v1.base-button color="secondary" @click="sendAddEvent" elevation="1" card-button>
+          <v-icon large>
+            mdi-plus
+          </v-icon>
+        </v1.base-button>
+      </template>
+      <template v-else>
+        <div class="card-title">
+          <p>
+            <strong>{{ theData.name }}</strong>
+          </p>
+
+          <div class="action">
+            <v1.base-button :default-height="false" icon @click="expand">
+              <v-icon tiny>
+                mdi-plus
+              </v-icon>
+            </v1.base-button>
+            <v1.base-button :default-height="false" icon>
+              <v-icon tiny>
+                mdi-share
+              </v-icon>
+            </v1.base-button>
+          </div>
+        </div>
+
+        <v-divider></v-divider>
+
+        <div class="card-body">
+          <div class="sub-section">
+            <p>
+              <span>{{ theData.step }}</span>
+            </p>
+            <p>Step</p>
+          </div>
+          <div class="sub-section">
+            <p>
+              <span>{{ theData.objective }}</span>
+            </p>
+            <p>Task Objective</p>
+          </div>
+          <div class="sub-section">
+            <p>
+              <span>{{ theData.data }}</span>
+            </p>
+            <p>Data</p>
           </div>
 
-          <p>
-            {{ theData.description }}
-          </p>
+          <div ref="content" class="content">
+            <div class="title-content">
+              <p>Model</p>
+              <p>{{ theData.model }}</p>
+            </div>
+
+            <p>
+              {{ theData.description }}
+            </p>
+          </div>
         </div>
-      </div>
-    </template>
-  </v-card>
+      </template>
+    </v-card>
+
+    <!-- BOARD CARD -->
+    <v-card v-else>
+      <p>Card da board</p>
+    </v-card>
+  </div>
 </template>
 
 <script>
@@ -73,6 +89,7 @@ export default {
     firstCard: { type: Boolean, default: false },
     maxWidth: { type: [Number, String], default: 480 },
     dataCard: { type: Object, default: () => ({}) },
+    boardCard: { type: Boolean, default: false },
   },
   methods: {
     sendAddEvent() {
