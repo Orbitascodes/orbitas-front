@@ -38,6 +38,7 @@ export default {
   methods: {
     changeFeature(feature) {
       this.$store.commit('changeFeature', feature);
+      this.$router.push('/');
     },
   },
 };

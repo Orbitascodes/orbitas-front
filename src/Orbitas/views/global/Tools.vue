@@ -28,7 +28,7 @@ export default {
 
 <style lang="scss" scoped>
 .tools-trigger {
-  bottom: 30px !important;
+  top: 25px !important;
   z-index: 99999999999;
 }
 </style>

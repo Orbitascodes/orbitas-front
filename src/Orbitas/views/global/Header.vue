@@ -1,9 +1,24 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <v-toolbar color="application-bg" elevation="0">
       <v-toolbar-title>
-        <img src="@/assets/images/AILAB.png" />
+        <img v-if="actualFeature === 'AiLab'" src="@/assets/images/AILAB.png" />
+        <p v-else-if="actualFeature === 'Board'" class="huge-text"><strong>Boards</strong></p>
       </v-toolbar-title>
+
+      <v-spacer v-if="actualFeature === 'Board'"></v-spacer>
+
+      <v1.base-input
+        v-if="actualFeature === 'Board'"
+        dense
+        solo
+        outlined
+        flat
+        type="text"
+        hide-details="auto"
+        append-icon="mdi-help"
+        no-margin
+      />
 
       <v-spacer></v-spacer>
 
@@ -42,13 +57,18 @@ export default {
       this.$store.commit('searchTasks', value);
     },
   },
+  computed: {
+    actualFeature() {
+      return this.$store.getters.changeFeature;
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 ::v-deep {
   .v-toolbar__content {
-    padding: 10px 8px;
+    padding: 10px 78px 10px 8px;
   }
 }
 </style>

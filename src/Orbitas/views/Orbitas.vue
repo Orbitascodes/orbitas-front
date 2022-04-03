@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <component :is="actualFeature"></component>
   </v-container>
 </template>
