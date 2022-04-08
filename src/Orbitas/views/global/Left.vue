@@ -3,8 +3,14 @@
     <div class="sidebar-header">
       <div>
         <router-link to="/">
-          <img v-if="!sidebarHasCollapsed" src="@/assets/images/Orbitas.png" />
-          <img v-else src="@/assets/images/OrbitasCircle.png" />
+          <img v-if="!sidebarHasCollapsed" src="@/assets/images/OrbitasNew.png" />
+          <img
+            v-else
+            :class="{
+              circle: sidebarHasCollapsed,
+            }"
+            src="@/assets/images/OrbitasCircleNew.png"
+          />
         </router-link>
       </div>
     </div>
@@ -69,6 +75,18 @@ export default {
   height: 95vh;
   padding: 10px 10px;
   position: relative;
+  .sidebar-header {
+    img {
+      width: 169px;
+      height: 42px;
+      object-fit: cover;
+      &.circle {
+        width: 42px;
+        height: 42px;
+        object-fit: cover;
+      }
+    }
+  }
   .wrapper-footer {
     position: absolute;
     bottom: 60px;

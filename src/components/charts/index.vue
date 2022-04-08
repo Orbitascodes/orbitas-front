@@ -8,7 +8,9 @@
 <script>
 import { use } from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
-import { BarChart, PieChart } from 'echarts/charts';
+import {
+  BarChart, PieChart, LineChart, BoxplotChart, GaugeChart
+} from 'echarts/charts';
 import {
   TitleComponent,
   TooltipComponent,
@@ -25,13 +27,16 @@ use([
   LegendComponent,
   BarChart,
   GridComponent,
+  LineChart,
+  BoxplotChart,
+  GaugeChart,
 ]);
 
 export default {
   props: {
     options: {
       type: Object,
-      default: () => this.option,
+      default: () => ({}),
     },
   },
   components: {
@@ -86,7 +91,6 @@ export default {
 
 <style lang="scss" scoped>
 .chart {
-  height: 200px;
-  width: 200px;
+  margin: 0 auto;
 }
 </style>

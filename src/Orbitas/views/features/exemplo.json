@@ -1,0 +1,150 @@
+[
+  {
+    "title": "Título",
+    "bordered": true,
+    "priority": {
+      "type": 2,
+      "rows": 1,
+      "cols": 4
+    },
+    "topic": "Financeiro",
+    "id": 123,
+    "pinned": false,
+    "favorite": false,
+    "note": "Essa nota tem tendência de alta [[alta]] e aqui tendência de baixa [[baixa]]",
+    "chartOptions": {
+      "grid": {
+        "height": 200,
+        "width": 300
+      },
+      "series": [
+        {
+          "type": "gauge",
+          "progress": {
+            "show": true,
+            "width": 15
+          },
+          "axisLine": {
+            "lineStyle": {
+              "width": 15
+            }
+          },
+          "splitLine": {
+            "length": 15,
+            "lineStyle": {
+              "width": 1,
+              "color": "#999"
+            }
+          },
+          "anchor": {
+            "show": true,
+            "showAbove": true,
+            "size": 10,
+            "itemStyle": {
+              "borderWidth": 10
+            }
+          },
+          "title": {
+            "show": false
+          },
+          "detail": {
+            "valueAnimation": true,
+            "fontSize": 40,
+            "offsetCenter": [
+              0, "70%"
+            ]
+          },
+          "data": [
+            {
+              "value": 70
+            }
+          ]
+        }
+      ]
+    }
+  },
+  
+  {
+    "title": "Título",
+    "bordered": true,
+    "priority": {
+      "type": 3,
+      "rows": 2,
+      "cols": 2
+    },
+    "topic": "Financeiro",
+    "id": 123,
+    "pinned": false,
+    "favorite": false,
+    "note": "Essa nota tem tendência de alta [[alta]] e aqui tendência de baixa [[baixa]]",
+    "chartOptions": {
+      "xAxis": {
+        "type": "category",
+        "show": false
+      },
+      "grid": {
+        "height": 200,
+        "left": 30,
+        "width": 200
+      },
+      "color": "grey",
+      "yAxis": {
+        "type": "value",
+        "show": false
+      },
+      "series": [
+        {
+          "data": [
+            120,
+            150,
+            200,
+            150,
+            120
+          ],
+          "type": "bar"
+        }
+      ]
+    }
+  },
+  {
+    "title": "Título",
+    "bordered": true,
+    "priority": {
+      "type": 1,
+      "rows": 1,
+      "cols": 2
+    },
+    "topic": "Financeiro",
+    "id": 123,
+    "pinned": false,
+    "favorite": false,
+    "chartOptions": {
+      "grid": {
+        "left": 100
+      },
+      "xAxis": {
+        "type": "category",
+        "data": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
+        ]
+      },
+      "yAxis": {
+        "type": "value"
+      },
+      "color": "grey",
+      "series": [
+        {
+          "data": [
+            150,
+            230,
+            224,
+            218,
+            135,
+            147,
+            260
+          ],
+          "type": "line"
+        }
+      ]
+    }
+  }
+]

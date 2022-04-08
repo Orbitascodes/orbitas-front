@@ -46,17 +46,13 @@
         <v-tabs-items v-model="actualTab">
           <v-tab-item value="tab-0">
             <div class="masonry" fluid>
-              <v1.base-card board-card />
-              <div class="item important-1 large">oi</div>
-              <div class="item"></div>
-              <div class="item"></div>
-              <div class="item"></div>
-              <div class="item positioned">positioned.</div>
-              <div class="item"></div>
-              <div class="item"></div>
-              <div class="item"></div>
-              <div class="item"></div>
-              <div class="item"></div>
+              <v1.base-card
+                v-for="(card, index) in dataCards"
+                :key="index"
+                :dataCard="card"
+                :class="`item rows-${card.priority.rows} cols-${card.priority.cols}`"
+                board-card
+              />
             </div>
           </v-tab-item>
           <v-tab-item value="tab-1">
@@ -84,6 +80,138 @@ export default {
       topics: ['Insights', 'Report 1', 'Report 2', 'Report 3', 'Report 4'],
       actualTab: 'tab-0',
       filterIsOpen: false,
+      dataCards: [
+        {
+          title: 'Título',
+          bordered: true,
+          priority: {
+            type: 2,
+            rows: 1,
+            cols: 4,
+          },
+          topic: 'Financeiro',
+          id: 123,
+          pinned: false,
+          favorite: false,
+          note: 'Essa nota tem tendência de alta [[alta]] e aqui tendência de baixa [[baixa]]',
+          chartOptions: {
+            grid: {
+              height: 200,
+              width: 300,
+            },
+            series: [
+              {
+                type: 'gauge',
+                progress: {
+                  show: true,
+                  width: 15,
+                },
+                axisLine: {
+                  lineStyle: {
+                    width: 15,
+                  },
+                },
+                splitLine: {
+                  length: 15,
+                  lineStyle: {
+                    width: 1,
+                    color: '#999',
+                  },
+                },
+                anchor: {
+                  show: true,
+                  showAbove: true,
+                  size: 10,
+                  itemStyle: {
+                    borderWidth: 10,
+                  },
+                },
+                title: {
+                  show: false,
+                },
+                detail: {
+                  valueAnimation: true,
+                  fontSize: 40,
+                  offsetCenter: [0, '70%'],
+                },
+                data: [
+                  {
+                    value: 70,
+                  },
+                ],
+              },
+            ],
+          },
+        },
+        {
+          title: 'Título',
+          bordered: true,
+          priority: {
+            type: 3,
+            rows: 2,
+            cols: 2,
+          },
+          topic: 'Financeiro',
+          id: 123,
+          pinned: false,
+          favorite: false,
+          note: 'Essa nota tem tendência de alta [[alta]] e aqui tendência de baixa [[baixa]]',
+          chartOptions: {
+            xAxis: {
+              type: 'category',
+              show: false,
+            },
+            grid: {
+              height: 200,
+              left: 30,
+              width: 200,
+            },
+            color: 'grey',
+            yAxis: {
+              type: 'value',
+              show: false,
+            },
+            series: [
+              {
+                data: [120, 150, 200, 150, 120],
+                type: 'bar',
+              },
+            ],
+          },
+        },
+        {
+          title: 'Título',
+          bordered: true,
+          priority: {
+            type: 1,
+            rows: 1,
+            cols: 2,
+          },
+          topic: 'Financeiro',
+          id: 123,
+          pinned: false,
+          favorite: false,
+          chartOptions: {
+            grid: {
+              left: 100,
+            },
+            xAxis: {
+              type: 'category',
+              data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            },
+            yAxis: {
+              type: 'value',
+            },
+            color: 'grey',
+            series: [
+              {
+                data: [150, 230, 224, 218, 135, 147, 260],
+                type: 'line',
+              },
+            ],
+          },
+        },
+      ],
     };
   },
 };
@@ -109,23 +237,40 @@ export default {
 }
 .masonry {
   display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(3, 1fr);
-  margin: 0 auto;
-  max-width: 100%;
-  padding: 3rem 0;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 1px;
+  grid-auto-rows: minmax(200px, auto);
+  grid-auto-flow: dense;
+  padding: 1px;
 }
 .item {
-  background-color: red;
-  min-height: 200px;
-  height: 100%;
-  width: 100%;
-  &.positioned {
-    grid-column: 2 / 4;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #000;
+  background-color: #ccc;
+  grid-column-end: span 2;
+  grid-row-end: span 1;
+  &.rows-2 {
+    grid-row-end: span 2;
   }
-  &.important-1 {
-    grid-column: 2 / 4;
-    height: 400px;
+  &.rows-3 {
+    grid-row-end: span 3;
+  }
+  &.rows-4 {
+    grid-row-end: span 4;
+  }
+  &.cols-4 {
+    grid-column-end: span 4;
+  }
+  &.cols-3 {
+    grid-column-end: span 3;
+  }
+  &.cols-2 {
+    grid-column-end: span 2;
+  }
+  &.cols-1 {
+    grid-column-end: span 1;
   }
 }
 .filter-col {

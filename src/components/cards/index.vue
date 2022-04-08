@@ -77,8 +77,61 @@
     </v-card>
 
     <!-- BOARD CARD -->
-    <v-card v-else>
-      <p>Card da board</p>
+    <v-card class="board" elevation="0" v-else>
+      <v-card-title class="header-card">
+        <v-layout align-center wrap justify-space-between>
+          <v-flex>
+            <p class="centralizer">
+              <img src="../../assets/images/retanguloCard.png" />
+            </p>
+          </v-flex>
+          <v-flex>
+            <p class="centralizer">
+              <img src="../../assets/images/share.png" />
+            </p>
+          </v-flex>
+          <v-flex>
+            <p class="centralizer">
+              <svg-favorite />
+            </p>
+          </v-flex>
+          <v-flex>
+            <p class="centralizer">
+              <img src="../../assets/images/pin.png" />
+            </p>
+          </v-flex>
+          <v-flex>
+            <p class="centralizer">
+              <svg-priority-circle />
+            </p>
+          </v-flex>
+        </v-layout>
+        <p class="title">
+          <strong>{{ dataCard.title }}</strong>
+        </p>
+      </v-card-title>
+
+      <v-layout>
+        <v-flex :xs7="dataCard.note ? true : false">
+          <v1.base-chart
+            style="width:400px;height:400px;"
+            :options="dataCard.chartOptions"
+          ></v1.base-chart>
+        </v-flex>
+        <v-flex v-if="dataCard.note">
+          <p class="note" v-html="dataCard.note" />
+        </v-flex>
+      </v-layout>
+
+      <v-card-actions>
+        <v-chip class="ma-2" color="blue lighten-4" text-color="white">
+          {{ dataCard.topic }}
+        </v-chip>
+        <v-spacer></v-spacer>
+        <v-btn elevation="0" color="blue-grey lighten-4" @click="openInfo(dataCard.id)">
+          More Info
+        </v-btn>
+      </v-card-actions>
     </v-card>
   </div>
 </template>
@@ -91,6 +144,32 @@ export default {
     dataCard: { type: Object, default: () => ({}) },
     boardCard: { type: Boolean, default: false },
   },
+  data() {
+    return {
+      option: {
+        xAxis: {
+          type: 'category',
+          show: false,
+        },
+        grid: {
+          height: 100,
+          left: 'center',
+          width: 100,
+        },
+        color: 'grey',
+        yAxis: {
+          type: 'value',
+          show: false,
+        },
+        series: [
+          {
+            data: [120, 150, 200, 150, 120],
+            type: 'bar',
+          },
+        ],
+      },
+    };
+  },
   methods: {
     sendAddEvent() {
       this.$emit('addNew');
@@ -101,6 +180,9 @@ export default {
       } else {
         this.$refs.content.removeAttribute('style');
       }
+    },
+    openInfo(id) {
+      console.log('card de id', id, 'selecionado');
     },
   },
   computed: {
@@ -170,6 +252,40 @@ export default {
     }
     .sub-section {
       text-align: center;
+    }
+  }
+}
+.header-card {
+  width: 100%;
+  .layout {
+    width: 100%;
+  }
+  img {
+    width: 30px;
+  }
+  svg {
+    width: 30px;
+  }
+}
+::v-deep {
+  .v-card.board {
+    flex-direction: column;
+    margin: 0;
+    height: 100%;
+    border: 1px solid grey;
+    border-radius: 0;
+    padding: 12px 20px;
+    .layout {
+      align-items: center;
+    }
+    .note {
+      align-self: center;
+    }
+    .v-card__title {
+      flex-direction: column;
+      p.title {
+        align-self: start;
+      }
     }
   }
 }
