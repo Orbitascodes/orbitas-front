@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../../Orbitas/views/Orbitas';
+import TopicCard from '../../Orbitas/views/TopicCard';
 import NewTask from '../../Orbitas/views/NewTask/index.vue';
 import Showcase from '../../Showcase';
 
@@ -19,6 +20,16 @@ const routes = [
     meta: {
       public: false,
       onlyNotAuthorized: false,
+    },
+  },
+  {
+    path: '/topic-card/:nome',
+    name: 'topicCard',
+    components: {
+      default: TopicCard,
+      header: require('../../Orbitas/views/global/Header').default,
+      left: require('../../Orbitas/views/global/Left').default,
+      tools: require('../../Orbitas/views/global/Tools').default,
     },
   },
   {

@@ -14,6 +14,15 @@
         </router-link>
       </div>
     </div>
+    <v-list v-if="actualFeature === 'Board'" dense>
+      <v-list-item-group v-model="selectedItem" color="primary">
+        <v-list-item v-for="(item, i) in items" :key="i">
+          <v-list-item-content>
+            <v-list-item-title v-text="item.text"></v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list-item-group>
+    </v-list>
     <div class="wrapper-footer">
       <v-layout class="sidebar-footer">
         <div xs3>
@@ -65,6 +74,29 @@ export default {
         this.$store.commit('sidebarHasCollapsed', v);
       },
     },
+    actualFeature() {
+      return this.$store.getters.changeFeature;
+    },
+  },
+  data() {
+    return {
+      selectedItem: 1,
+      items: [
+        { text: 'Home', action: () => ({}) },
+        {
+          text: 'Topics',
+          action: () => {
+            this.$store.commit('openTopicModal', true);
+          },
+        },
+        {
+          text: 'Pinned Cards',
+          action: () => {},
+        },
+        { text: 'Favorites', action: () => ({}) },
+        { text: 'Stories', action: () => ({}) },
+      ],
+    };
   },
 };
 </script>

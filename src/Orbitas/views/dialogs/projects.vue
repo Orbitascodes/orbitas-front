@@ -14,7 +14,7 @@
         <svg-ai-lab></svg-ai-lab>
       </v-btn>
       <v-btn class="to-feature" icon @click="changeFeature('Board')">
-        <svg-ai-lab></svg-ai-lab>
+        <svg-boards></svg-boards>
       </v-btn>
     </v-card>
   </v-menu>

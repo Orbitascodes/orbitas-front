@@ -78,38 +78,47 @@
 
     <!-- BOARD CARD -->
     <v-card class="board" elevation="0" v-else>
-      <v-card-title class="header-card">
-        <v-layout align-center wrap justify-space-between>
-          <v-flex>
-            <p class="centralizer">
-              <img src="../../assets/images/retanguloCard.png" />
-            </p>
-          </v-flex>
-          <v-flex>
-            <p class="centralizer">
-              <img src="../../assets/images/share.png" />
-            </p>
-          </v-flex>
-          <v-flex>
-            <p class="centralizer">
-              <svg-favorite />
-            </p>
-          </v-flex>
-          <v-flex>
-            <p class="centralizer">
-              <img src="../../assets/images/pin.png" />
-            </p>
-          </v-flex>
-          <v-flex>
-            <p class="centralizer">
-              <svg-priority-circle />
-            </p>
-          </v-flex>
-        </v-layout>
+      <div class="header-card">
         <p class="title">
           <strong>{{ dataCard.title }}</strong>
         </p>
-      </v-card-title>
+        <v-menu left offset-y>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn color="primary" icon dark v-bind="attrs" v-on="on">
+              <v-icon tiny>
+                mdi-dots-vertical
+              </v-icon>
+            </v-btn>
+          </template>
+          <v-layout>
+            <v-flex>
+              <p class="centralizer">
+                <img src="../../assets/images/retanguloCard.png" />
+              </p>
+            </v-flex>
+            <v-flex>
+              <p class="centralizer">
+                <img src="../../assets/images/share.png" />
+              </p>
+            </v-flex>
+            <v-flex>
+              <p class="centralizer">
+                <svg-favorite />
+              </p>
+            </v-flex>
+            <v-flex>
+              <p class="centralizer">
+                <img src="../../assets/images/pin.png" />
+              </p>
+            </v-flex>
+            <v-flex>
+              <p class="centralizer">
+                <svg-priority-circle />
+              </p>
+            </v-flex>
+          </v-layout>
+        </v-menu>
+      </div>
 
       <v-layout>
         <v-flex :xs7="dataCard.note ? true : false">
@@ -182,6 +191,7 @@ export default {
       }
     },
     openInfo(id) {
+      this.$emit('selected', id);
       console.log('card de id', id, 'selecionado');
     },
   },
@@ -257,11 +267,15 @@ export default {
 }
 .header-card {
   width: 100%;
-  .layout {
-    width: 100%;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.v-menu__content {
+  padding: 10px;
   img {
     width: 30px;
+    margin: 3px;
   }
   svg {
     width: 30px;

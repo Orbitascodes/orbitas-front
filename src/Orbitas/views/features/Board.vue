@@ -41,7 +41,7 @@
       </v-flex>
     </v-layout>
 
-    <v-layout>
+    <v-layout v-if="!cardSelected">
       <v-flex>
         <v-tabs-items v-model="actualTab">
           <v-tab-item value="tab-0">
@@ -52,6 +52,7 @@
                 :dataCard="card"
                 :class="`item rows-${card.priority.rows} cols-${card.priority.cols}`"
                 board-card
+                @selected="selected"
               />
             </div>
           </v-tab-item>
@@ -70,13 +71,22 @@
       >
       </v-flex>
     </v-layout>
+    <v-layout v-else>
+      <topic-card :cardData="cardSelected[0]"></topic-card>
+    </v-layout>
   </div>
 </template>
 
 <script>
+import topicCard from '../../pages/topicCard';
+
 export default {
+  components: {
+    topicCard,
+  },
   data() {
     return {
+      cardSelected: null,
       topics: ['Insights', 'Report 1', 'Report 2', 'Report 3', 'Report 4'],
       actualTab: 'tab-0',
       filterIsOpen: false,
@@ -90,7 +100,7 @@ export default {
             cols: 4,
           },
           topic: 'Financeiro',
-          id: 123,
+          id: 121,
           pinned: false,
           favorite: false,
           note: 'Essa nota tem tendência de alta [[alta]] e aqui tendência de baixa [[baixa]]',
@@ -152,7 +162,7 @@ export default {
             cols: 2,
           },
           topic: 'Financeiro',
-          id: 123,
+          id: 122,
           pinned: false,
           favorite: false,
           note: 'Essa nota tem tendência de alta [[alta]] e aqui tendência de baixa [[baixa]]',
@@ -213,6 +223,12 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    selected(id) {
+      this.cardSelected = this.dataCards.filter((item) => item.id === id);
+      console.log(this.cardSelected, 'teste')
+    },
   },
 };
 </script>
