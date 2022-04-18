@@ -1,7 +1,19 @@
 <template>
   <v-dialog v-model="show" width="500">
     <v-card>
-      <v-text-field v-model="searchTopics" label="Filtrar tópicos"></v-text-field>
+      <div class="header">
+        <v1.base-input
+          dense
+          solo
+          outlined
+          flat
+          type="text"
+          hide-details="auto"
+          append-icon="mdi-magnify"
+          no-margin
+          v-model="searchTopics"
+        />
+      </div>
       <ul>
         <li v-for="(item, key) in filteredTopics" @click="goToTopic(item)" :key="key">
           {{ item }}
@@ -65,10 +77,21 @@ export default {
 ul {
   list-style: none;
   li {
-    color: #712eee;
+    color: grey;
     font-weight: 700;
-    text-decoration: underline;
     cursor: pointer;
   }
+}
+::v-deep {
+  .v-input {
+    width: 200px;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-bottom: 30px;
 }
 </style>
