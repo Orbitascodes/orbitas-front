@@ -48,6 +48,7 @@
             <div class="masonry" fluid>
               <v1.base-card
                 v-for="(card, index) in dataCards"
+                :show="availableTopics.includes(card.topic.toLowerCase())"
                 :key="index"
                 :dataCard="card"
                 :class="`item rows-${card.priority.rows} cols-${card.priority.cols}`"
@@ -84,8 +85,25 @@ export default {
   components: {
     topicCard,
   },
+  computed: {
+    topicSelected() {
+      return this.$store.getters.topicSelected;
+    },
+  },
+  mounted() {
+    this.bkpTopics = this.availableTopics;
+  },
+  watch: {
+    topicSelected(v) {
+      if (v) {
+        this.availableTopics = [v];
+      }
+    },
+  },
   data() {
     return {
+      availableTopics: ['financeiro', 'medico', 'vendas'],
+      bkpTopics: [],
       cardSelected: null,
       topics: ['Insights', 'Report 1', 'Report 2', 'Report 3', 'Report 4'],
       actualTab: 'tab-0',
@@ -99,7 +117,7 @@ export default {
             rows: 1,
             cols: 4,
           },
-          topic: 'Financeiro',
+          topic: 'Medico',
           id: 121,
           pinned: false,
           favorite: false,
@@ -197,7 +215,7 @@ export default {
             rows: 1,
             cols: 2,
           },
-          topic: 'Financeiro',
+          topic: 'Vendas',
           id: 123,
           pinned: false,
           favorite: false,
@@ -227,7 +245,6 @@ export default {
   methods: {
     selected(id) {
       this.cardSelected = this.dataCards.filter((item) => item.id === id);
-      console.log(this.cardSelected, 'teste')
     },
   },
 };

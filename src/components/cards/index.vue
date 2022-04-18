@@ -1,5 +1,5 @@
 <template>
-  <div class="main-card">
+  <div class="main-card" v-if="show">
     <v-card
       v-if="!boardCard"
       v-bind="$attrs"
@@ -152,6 +152,7 @@ export default {
     maxWidth: { type: [Number, String], default: 480 },
     dataCard: { type: Object, default: () => ({}) },
     boardCard: { type: Boolean, default: false },
+    show: { type: Boolean, default: true },
   },
   data() {
     return {

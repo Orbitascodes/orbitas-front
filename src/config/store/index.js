@@ -15,6 +15,7 @@ export default new Vuex.Store({
     searchTasks: null,
     changeFeature: 'AiLab',
     openTopicModal: false,
+    topicSelected: null,
   },
   mutations: {
     sidebarHasCollapsed: (state, payload) => {
@@ -38,6 +39,9 @@ export default new Vuex.Store({
     openTopicModal: (state, payload) => {
       state.openTopicModal = payload;
     },
+    topicSelected: (state, payload) => {
+      state.topicSelected = payload;
+    },
     stepDirection: (state, payload) => {
       if (payload === 'foward' && state.actualCreationStep <= state.maxStepCreation) {
         state.actualCreationStep++;
@@ -56,6 +60,7 @@ export default new Vuex.Store({
     searchTasks: (state) => state.searchTasks,
     changeFeature: (state) => state.changeFeature,
     openTopicModal: (state) => state.openTopicModal,
+    topicSelected: (state) => state.topicSelected,
   },
   modules: {},
 });

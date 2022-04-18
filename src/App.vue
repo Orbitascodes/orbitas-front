@@ -18,6 +18,7 @@
 
     <dialog.projects />
     <dialog.help-user />
+    <dialog.topic />
   </v-app>
 </template>
 
@@ -33,6 +34,7 @@ export default {
   components: {
     'dialog.projects': () => import('./Orbitas/views/dialogs/projects.vue'),
     'dialog.help-user': () => import('./Orbitas/views/dialogs/helpUser.vue'),
+    'dialog.topic': () => import('./Orbitas/views/dialogs/topics.vue'),
   },
   computed: {
     sidebarHasCollapsed() {
