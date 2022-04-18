@@ -52,7 +52,7 @@ export default {
   flex-wrap: wrap;
   max-width: 200px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   .to-feature {
     margin: 10px 5px;
   }

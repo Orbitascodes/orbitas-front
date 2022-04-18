@@ -72,7 +72,7 @@
       </v-flex>
     </v-layout>
     <v-layout v-else>
-      <topic-card :cardData="cardSelected[0]"></topic-card>
+      <topic-card :cardData="cardSelected[0]" @back="cardSelected = null"></topic-card>
     </v-layout>
   </div>
 </template>
