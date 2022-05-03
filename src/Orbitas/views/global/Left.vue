@@ -1,18 +1,13 @@
 <template>
   <div class="main-sidebar">
     <div class="sidebar-header">
-      <div>
-        <router-link to="/">
-          <img v-if="!sidebarHasCollapsed" src="@/assets/images/OrbitasNew.png" />
-          <img
-            v-else
-            :class="{
-              circle: sidebarHasCollapsed,
-            }"
-            src="@/assets/images/OrbitasCircleNew.png"
-          />
-        </router-link>
-      </div>
+      <div
+        :class="{
+          collapse: true,
+          flip: sidebarHasCollapsed,
+        }"
+        @click="sidebarHasCollapsed = !sidebarHasCollapsed"
+      ></div>
     </div>
     <v-list v-if="actualFeature === 'Board'" dense>
       <v-list-item-group v-model="selectedItem" color="primary">
@@ -50,7 +45,7 @@
         </div>
       </v-layout>
     </div>
-    <div class="collapse">
+    <!-- <div class="collapse">
       <svg-arrow-back
         @click.native="sidebarHasCollapsed = !sidebarHasCollapsed"
         fill="#712EEE00"
@@ -59,7 +54,7 @@
           flip: sidebarHasCollapsed,
         }"
       />
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -104,10 +99,30 @@ export default {
 <style lang="scss" scoped>
 .main-sidebar {
   flex-direction: column;
-  height: 95vh;
-  padding: 10px 10px;
+  height: 94vh;
   position: relative;
   .sidebar-header {
+    position: relative;
+    .collapse {
+      position: absolute;
+      background-color: #e9e9e9;
+      top: 0;
+      bottom: -25px;
+      left: 0;
+      right: 0;
+      // &.flip {
+      //   transform: rotate(180deg);
+      // }
+      cursor: pointer;
+      &::after {
+        content: '〉';
+        position: absolute;
+        font-weight: 700;
+        top: 0px;
+        right: 20px;
+        color: #555555;
+      }
+    }
     img {
       width: 169px;
       height: 42px;
@@ -124,6 +139,7 @@ export default {
     bottom: 60px;
   }
   .sidebar-footer {
+    padding: 10px 10px;
     position: relative;
     height: fit-content;
     flex: unset;
@@ -142,14 +158,13 @@ export default {
       font-weight: 600;
       position: absolute;
       bottom: -10px;
-      right: -20px;
+      right: 0;
     }
   }
   .back {
     position: absolute;
     bottom: 0;
     margin-top: 20px;
-    // transform: translateX(8px);
     cursor: pointer;
     &.flip {
       transform: rotate(180deg);

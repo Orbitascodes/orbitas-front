@@ -1,13 +1,13 @@
 <template>
   <v-btn
     @click="showHelpUser = !showHelpUser"
-    elevation="2"
+    elevation="0"
     class="tools-trigger"
     fab
     right
     bottom
     absolute
-    ><img src="@/assets/images/Tools.png"
+    ><img src="@/assets/images/Luna.png"
   /></v-btn>
 </template>
 
@@ -28,7 +28,7 @@ export default {
 
 <style lang="scss" scoped>
 .tools-trigger {
-  top: 25px !important;
+  top: 3px !important;
   z-index: 99999999999;
 }
 </style>

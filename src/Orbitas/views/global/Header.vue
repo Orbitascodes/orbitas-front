@@ -1,43 +1,32 @@
 <template>
-  <v-container fluid>
-    <v-toolbar color="application-bg" elevation="0">
-      <v-toolbar-title>
-        <img v-if="actualFeature === 'AiLab'" src="@/assets/images/AILAB.png" />
-        <p v-else-if="actualFeature === 'Board'" class="huge-text"><strong>Boards</strong></p>
-      </v-toolbar-title>
+  <v-toolbar color="tertiary" elevation="0">
+    <v-toolbar-title>
+      <v-layout>
+        <v-flex align-self-center>
+          <img src="@/assets/images/OrbitasNew2.png" />
+        </v-flex>
+        <v-flex align-self-center>
+          <p class="huge-text"><strong>orbitas</strong></p>
+        </v-flex>
+      </v-layout>
+    </v-toolbar-title>
 
-      <v-spacer v-if="actualFeature === 'Board'"></v-spacer>
-
-      <v1.base-input
-        v-if="actualFeature === 'Board'"
-        dense
-        solo
-        outlined
-        flat
-        type="text"
-        hide-details="auto"
-        append-icon="mdi-help"
-        no-margin
-      />
-
-      <v-spacer></v-spacer>
-
-      <v1.base-input
-        dense
-        solo
-        outlined
-        flat
-        type="text"
-        hide-details="auto"
-        append-icon="mdi-magnify"
-        no-margin
-        v-model="search"
-      />
-      <v-btn ref="project-trigger" @click="showDialogProject = !showDialogProject" icon>
-        <v-icon>mdi-apps</v-icon>
-      </v-btn>
-    </v-toolbar>
-  </v-container>
+    <v1.base-input
+      dense
+      solo
+      outlined
+      flat
+      type="text"
+      hide-details="auto"
+      append-icon="mdi-magnify"
+      no-margin
+      v-model="search"
+      class="search"
+    />
+    <v-btn ref="project-trigger" color="white" @click="showDialogProject = !showDialogProject" icon>
+      <v-icon>mdi-apps</v-icon>
+    </v-btn>
+  </v-toolbar>
 </template>
 
 <script>
@@ -66,9 +55,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.search {
+  margin: 0 auto;
+}
 ::v-deep {
   .v-toolbar__content {
     padding: 10px 78px 10px 8px;
+  }
+  .v-toolbar__title {
+    img {
+      margin-top: 5px;
+      margin-right: 5px;
+      width: 30px;
+    }
+    p {
+      strong {
+        color: white;
+      }
+    }
   }
 }
 </style>

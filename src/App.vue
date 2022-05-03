@@ -2,13 +2,13 @@
   <v-app>
     <v-main>
       <router-view class="view tools" name="tools"></router-view>
+      <router-view name="header"></router-view>
       <v-layout>
         <div v-if="!routesToSkip.includes(routeName)" class="flex side-left" ref="sidebar">
           <router-view class="view left" name="left"></router-view>
         </div>
         <v-divider vertical></v-divider>
         <div class="flex main">
-          <router-view name="header"></router-view>
           <div class="main-scroll">
             <router-view />
           </div>
