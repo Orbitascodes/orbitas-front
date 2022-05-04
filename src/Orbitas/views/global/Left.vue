@@ -12,8 +12,15 @@
     <v-list v-if="actualFeature === 'Board'" dense>
       <v-list-item-group v-model="selectedItem" color="primary">
         <v-list-item v-for="(item, i) in items" :key="i">
+          <component :is="item.icon" :width="20" :height="20"></component>
           <v-list-item-content>
-            <v-list-item-title @click="item.action" v-text="item.text"></v-list-item-title>
+            <v-list-item-title
+              :class="{
+                hide: sidebarHasCollapsed
+              }"
+              @click="item.action"
+              v-text="item.text"
+            ></v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list-item-group>
@@ -45,16 +52,6 @@
         </div>
       </v-layout>
     </div>
-    <!-- <div class="collapse">
-      <svg-arrow-back
-        @click.native="sidebarHasCollapsed = !sidebarHasCollapsed"
-        fill="#712EEE00"
-        :class="{
-          back: true,
-          flip: sidebarHasCollapsed,
-        }"
-      />
-    </div> -->
   </div>
 </template>
 
@@ -77,19 +74,21 @@ export default {
     return {
       selectedItem: 0,
       items: [
-        { text: 'Home', action: () => ({}) },
+        { text: 'Home', action: () => ({}), icon: 'svg-home' },
         {
           text: 'Topics',
           action: () => {
             this.$store.commit('openTopicModal', true);
           },
+          icon: 'svg-topic',
         },
         {
           text: 'Pinned Cards',
           action: () => {},
+          icon: 'svg-pinned',
         },
-        { text: 'Favorites', action: () => ({}) },
-        { text: 'Stories', action: () => ({}) },
+        { text: 'Favorites', action: () => ({}), icon: 'svg-star' },
+        { text: 'Stories', action: () => ({}), icon: 'svg-story' },
       ],
     };
   },
@@ -97,6 +96,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+::v-deep {
+  .v-item-group {
+    margin-top: 17px;
+    .v-list-item__content {
+      margin-left: 5px;
+      .hide {
+        display: none;
+      }
+    }
+  }
+}
 .main-sidebar {
   flex-direction: column;
   height: 94vh;

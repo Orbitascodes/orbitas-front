@@ -23,5 +23,15 @@ export default {
       return this.$store.getters.changeFeature;
     },
   },
+  mounted() {
+    if (localStorage.getItem('actualFeature')) {
+      this.$store.commit('changeFeature', localStorage.getItem('actualFeature'));
+    }
+  },
+  watch: {
+    actualFeature(v) {
+      localStorage.setItem('actualFeature', v);
+    },
+  },
 };
 </script>
